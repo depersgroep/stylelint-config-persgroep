@@ -14,12 +14,12 @@ Add the `extends` array to your `.stylelintrc` with the config sets you need.
 
 ```
 extends:
-  - persgroep
+  - stylelint-config-persgroep
 ```
 
-If some rules don't work for you, you can disable them. This can also help when you migrate to this config: disable all rules, re-enable one and fix errors, re-enable the next rule.
+If some rules don't work for you, you can disable them. This can also help when you migrate to this config: disable all rules, re-enable one and fix errors, re-enable the next rule. Set the rule to `null` to do this.
 
-For Fannypack:
+Example for Fannypack:
 ```
 rules:
   # Problems: one problem with nested blocks
