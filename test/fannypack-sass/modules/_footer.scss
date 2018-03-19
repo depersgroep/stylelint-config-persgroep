@@ -1,0 +1,21 @@
+////////////////////////////////////////////////////////////////////////////////
+// FOOTER
+//
+// description:
+// global site's footer
+////////////////////////////////////////////////////////////////////////////////
+
+.site-footer {
+	flex: 1 0 100%;
+	height: $footer-height;
+	padding: $double-spacing-unit;
+	border-top: 1px solid $border-color;
+	background-color: $footer-bg;
+	font-size: $font-size-medium;
+	text-align: center;
+
+	// scss-lint:disable PropertySpelling
+	@supports (display: grid) {
+		grid-column-end: span 2;
+	}
+}

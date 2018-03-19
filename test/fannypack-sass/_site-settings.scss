@@ -1,0 +1,199 @@
+////////////////////////////////////////////////////////////////////////////////
+// SITE SETTINGS
+//
+// description:
+// global variables
+////////////////////////////////////////////////////////////////////////////////
+
+// scss-lint:disable SpaceAfterVariableName
+
+//==============================================================================
+// COLORS
+//==============================================================================
+
+// Grayscale
+$black           : #000 !default;
+$almost-black    : #222 !default;
+$dark-gray       : #404040 !default;
+$steel           : #666 !default;
+$aluminum        : #9e9e9e !default;
+$gray            : #aaa !default;
+$iron            : #ccc !default;
+$silver          : #dedede !default;
+$evil-gray       : #e1e1e1 !default;
+$whitesmoke      : #fafafa !default;
+$white           : #fff !default;
+
+$grayscalecolors: () !default;
+$grayscalecolors: map-merge((
+	'black'       : $black,
+	'almost-black': $almost-black,
+	'dark-gray'   : $dark-gray,
+	'steel'       : $steel,
+	'aluminum'    : $aluminum,
+	'gray'        : $gray,
+	'iron'        : $iron,
+	'silver'      : $silver,
+	'evil-gray'   : $evil-gray,
+	'whitesmoke'  : $whitesmoke,
+	'white'       : $white
+	), $grayscalecolors);
+
+// Social Media
+$facebook-color  : #365187 !default;
+$twitter-color   : #199bd3 !default;
+$youtube-color   : #e52d27 !default;
+$instagram-color : #125688 !default;
+$spotify-color   : #1ed760 !default;
+$soundcloud-color: #f50 !default;
+
+$socialmediacolors: () !default;
+$socialmediacolors: map-merge((
+	'facebook'  : $facebook-color,
+	'twitter'   : $twitter-color,
+	'youtube'   : $youtube-color,
+	'instagram' : $instagram-color,
+	'spotify'   : $spotify-color,
+	'soundcloud': $soundcloud-color
+	), $socialmediacolors);
+
+// custom colors
+$coolblue     : #47a0c3 !default;
+$duskblue     : #227393 !default;
+$lightbluegrey: #a8cfde !default;
+$slate        : #3c4d62 !default;
+$dark         : #152130 !default;
+$warmgrey     : $aluminum !default;
+
+$customcolors: () !default;
+$customcolors: map-merge((
+	'coolblue'     : $coolblue,
+	'duskblue'     : $duskblue,
+	'lightbluegrey': $lightbluegrey,
+	'slate'        : $slate,
+	'dark'         : $dark,
+	'warmgrey'     : $warmgrey
+	), $customcolors);
+
+// additional colors
+$orangepink: #fe6c59 !default;
+$lightishgreen: #6bd888 !default;
+$lightishpurple: #ad71e2 !default;
+$cornflower    : #5b84f3 !default;
+$lightteal     : #84dcc8 !default;
+$sunyellow     : #ffd63e !default;
+$apricot       : #ffb060 !default;
+$lightsalmon   : #ffab93 !default;
+
+// $lumberjack-red: $orangepink !default;
+// $lavender-blue : $cornflower !default;
+// $turquoise-blue: $lightteal !default;
+// $steel-blue    : #47a0c3 !default;
+// $green-yellow  : #e3d30d !default;
+// $spring-green  : #6bd888 !default;
+
+$additionalcolors: () !default;
+$additionalcolors: map-merge((
+	'orangepink'    : $orangepink,
+	'lightishgreen' : $lightishgreen,
+	'lightishpurple': $lightishpurple,
+	'cornflower'    : $cornflower,
+	'lightteal'     : $lightteal,
+	'sunyellow'     : $sunyellow,
+	'apricot'       : $apricot,
+	'lightsalmon'   : $lightsalmon
+	), $additionalcolors);
+
+// states - functional colors
+$success-color   : $lightishgreen !default;
+$warning-color   : $apricot !default;
+$error-color     : $orangepink !default;
+$info-color      : $coolblue !default;
+$muted-color     : $warmgrey !default;
+
+// functional colors
+$functionalcolors: () !default;
+$functionalcolors: map-merge((
+	'success': $lightishgreen,
+	'warning': $apricot,
+	'error'  : $orangepink,
+	'info'   : $coolblue,
+	'muted'  : $warmgrey
+	), $functionalcolors);
+
+// MAIN COLORS
+$primary-color   : $coolblue !default;
+$secondary-color : $dark !default;
+
+// main colors
+$maincolors: () !default;
+$maincolors: map-merge((
+	'primary': $coolblue,
+	'secondary': $dark
+	), $maincolors);
+
+$allcolors: map-merge($customcolors, $functionalcolors) !default;
+$allcolors: map-merge($additionalcolors, $allcolors);
+$allcolors: map-merge($socialmediacolors, $allcolors);
+$allcolors: map-merge($maincolors, $allcolors);
+
+
+// human readable color formats
+$transparent     : transparent !default;
+
+// global property colors
+$body-bg           : $whitesmoke !default;
+$link-color        : $coolblue !default;
+$link-hover-color  : $duskblue !default;
+$link-visited-color: $slate !default;
+$link-active-color : $link-hover-color !default;
+$border-color      : $silver !default;
+$text-color        : $dark-gray !default;
+$muted-color       : $warmgrey !default;
+
+//==============================================================================
+// TYPOGRAPHY
+//==============================================================================
+$font-path        : '../fonts/' !default;
+
+$sans-serif       : 'Source Sans Pro', Arial, sans-serif !default;
+$serif            : Georgia, sans-serif !default;
+
+$font-size-base   : 16px !default;
+$line-height-base : 1.5 !default;
+$line-height-large: 1.3 !default;
+
+// typography scale
+$font-size-tiny   : emify(10) !default;
+$font-size-small  : emify(12) !default;
+$font-size-medium : emify(14) !default;
+$font-size-large  : emify(20) !default;
+
+$font-size-h1     : emify(40) !default;
+$font-size-h2     : emify(32) !default;
+$font-size-h3     : emify(24) !default;
+$font-size-h4     : emify(21) !default;
+$font-size-h5     : $font-size-large !default;
+$font-size-h6     : $font-size-small !default;
+
+//==============================================================================
+// SPACINGS
+//==============================================================================
+$base-spacing-unit  : 10px !default;
+$half-spacing-unit  : ($base-spacing-unit / 2) !default;
+$double-spacing-unit: ($base-spacing-unit * 2) !default;
+
+//==============================================================================
+// BORDER RADII
+//==============================================================================
+$border-radius-base : 2px !default;
+$border-radius-large: ($border-radius-base * 2) !default;
+
+//==============================================================================
+// BREAKPOINTS
+//==============================================================================
+$bp-small : 480px !default;
+$bp-medium: 720px !default;
+$bp-large: 920px !default;
+
+// scss-lint:enable SpaceAfterVariableName

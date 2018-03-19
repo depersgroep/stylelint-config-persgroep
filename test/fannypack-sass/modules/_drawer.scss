@@ -1,0 +1,151 @@
+////////////////////////////////////////////////////////////////////////////////
+// DRAWER
+//
+// description:
+// a auto-collapsable sidebar to use in a webapp: e.g. a dashboard
+////////////////////////////////////////////////////////////////////////////////
+
+//==============================================================================
+// CHECKBOX HACK
+// DEPRECATED !!!!!
+// replaced by _hamburger.scss
+//==============================================================================
+.drawer__checkbox {
+	@include visually-hidden;
+}
+
+// the menu (sidebar)
+.drawer__menu {
+	display: block;
+	position: fixed;
+	top: ($base-spacing-unit * 1.5);
+	left: $base-spacing-unit;
+	width: $drawer-hamburger-dimension;
+	height: $drawer-hamburger-dimension;
+	padding: $half-spacing-unit $base-spacing-unit;
+	border: 1px solid $hamburger-border-color;
+	border-radius: $hamburger-border-radius;
+	cursor: pointer;
+	z-index: $drawer-hamburger-z-index; // same as .site-header
+}
+
+.drawer__menu-line {
+	display: block;
+	width: 100%;
+	height: 2px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	background-color: $drawer-hamburger-line-color;
+
+	&:first-of-type {
+		margin-top: 9px;
+	}
+
+	.drawer__menu--light & {
+		background-color: $drawer-hamburger-light-line-color;
+	}
+}
+
+// wrapper for the main content, REQUIRED when using .layout--drawer-push
+.drawer__push-container {
+	// when the drawer completely disappears
+	.hamburger__checkbox:checked ~ & {
+		@include mq-min($bp-large) {
+			margin-left: 0;
+
+			.site-header {
+				left: 0;
+			}
+		}
+	}
+
+	// when the gutter (icons) remains visible
+	.hamburger__checkbox:checked ~ .drawer--gutter + & {
+		@include mq-min($bp-large) {
+			margin-left: $drawer-gutter-width;
+
+			.site-header {
+				left: $drawer-gutter-width;
+			}
+		}
+	}
+}
+
+
+//==============================================================================
+// THE ACTUAL DRAWER
+//==============================================================================
+.drawer {
+	position: fixed;
+	top: $site-header-height;
+	bottom: 0;
+	left: ($drawer-width * -1);
+	width: $drawer-width;
+	padding: ($base-spacing-unit * 5) ($base-spacing-unit * 3);
+	background-color: $drawer-bg;
+	overflow: auto;
+	z-index: 2; // higher than .main-content
+
+	@include mq-min($bp-large) {
+		left: 0;
+	}
+
+	// .drawer__checkbox is deprecated
+	.drawer__checkbox:checked ~ &,
+	.hamburger__checkbox:checked ~ & {
+		left: 0;
+
+		@include mq-min($bp-large) {
+			left: ($drawer-width * -1);
+		}
+	}
+}
+
+// when collapsed, the icons remain visible
+.drawer--gutter {
+	// on small screens the default is `collapsed with gutter visible`
+	.hamburger__checkbox:not(:checked) ~ & {
+		@include mq-max($bp-large - 1) {
+			left: 0;
+			width: $drawer-gutter-width;
+			padding-right: ($base-spacing-unit * 1.5);
+			padding-left: ($base-spacing-unit * 1.5);
+		}
+	}
+
+	.hamburger__checkbox:checked ~ & {
+		width: $drawer-width;
+
+		// large screens
+		@include mq-min($bp-large) {
+			left: 0;
+			width: $drawer-gutter-width;
+			padding-right: ($base-spacing-unit * 1.5);
+			padding-left: ($base-spacing-unit * 1.5);
+		}
+	}
+}
+
+.drawer__section {
+	padding: $double-spacing-unit 0;
+}
+
+.drawer__section-title {
+	margin-bottom: $double-spacing-unit;
+	color: $drawer-section-title-color;
+	font-size: $font-size-medium;
+
+	.hamburger__checkbox:not(:checked) ~ .drawer--gutter & {
+		@include mq-max($bp-large - 1) {
+			visibility: hidden;
+		}
+	}
+
+	.hamburger__checkbox:checked ~ .drawer--gutter & {
+		visibility: visible;
+
+		@include mq-min($bp-large) {
+			visibility: hidden;
+		}
+	}
+}

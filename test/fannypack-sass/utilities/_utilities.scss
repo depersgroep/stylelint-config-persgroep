@@ -1,0 +1,21 @@
+////////////////////////////////////////////////////////////////////////////////
+// UTILITIES
+//
+// description:
+// Helper classes
+////////////////////////////////////////////////////////////////////////////////
+
+// hide something visually but make it accessible to screenreaders or other
+// assistive technologies
+.sr-only {
+	@include visually-hidden;
+}
+
+.clearfix {
+	@include clearfix;
+}
+
+.unstyled-list {
+	@include unstyled-list;
+}
+

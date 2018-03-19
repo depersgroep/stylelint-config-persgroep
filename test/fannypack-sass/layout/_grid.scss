@@ -1,0 +1,140 @@
+////////////////////////////////////////////////////////////////////////////////
+// GRID
+//
+// description
+////////////////////////////////////////////////////////////////////////////////
+
+.grid {
+	@include clearfix;
+	margin-right: ($grid-spacing-unit * -1);
+	margin-left: ($grid-spacing-unit * -1);
+}
+
+.grid--medium {
+	@include mq-max($bp-medium - 1) {
+		margin-right: 0;
+		margin-left: 0;
+
+		&::after {
+			content: none;
+		}
+	}
+}
+
+.grid--small {
+	@include mq-max($bp-small - 1) {
+		margin-right: 0;
+		margin-left: 0;
+
+		&::after {
+			content: none;
+		}
+	}
+}
+
+[class^="col-"] {
+	padding-right: $grid-spacing-unit;
+	padding-left: $grid-spacing-unit;
+	float: left;
+
+	.grid--medium & {
+		@include mq-max($bp-medium - 1) {
+			padding-right: 0;
+			padding-left: 0;
+			float: none;
+		}
+	}
+
+	.grid--small & {
+		@include mq-max($bp-small - 1) {
+			padding-right: 0;
+			padding-left: 0;
+			float: none;
+		}
+	}
+}
+
+@for $i from 1 through 12 {
+	.col-#{$i} {
+		width: percentage($i / 12);
+
+		.grid--medium & {
+			@include mq-max($bp-medium - 1) {
+				width: auto;
+			}
+		}
+
+		.grid--small & {
+			@include mq-max($bp-small - 1) {
+				width: auto;
+			}
+		}
+	}
+}
+
+@for $i from 1 through 11 {
+	.col--float-offset-#{$i} {
+		margin-left: percentage($i / 12);
+	}
+}
+
+.col--clear {
+	clear: left;
+}
+
+// If browser supports grid layout, we use the cascade in our advantage
+
+@supports (display: grid) {
+	// scss-lint:disable PropertySpelling
+	.grid {
+		display: grid;
+		margin-right: 0;
+		margin-left: 0;
+		grid-gap: $double-spacing-unit;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+
+		&::after {
+			content: none;
+		}
+	}
+
+	.grid--medium {
+		@include mq-max($bp-medium - 1) {
+			display: block;
+		}
+	}
+
+	.grid--small {
+		@include mq-max($bp-small - 1) {
+			display: block;
+		}
+	}
+
+	[class^="col-"] {
+		width: auto;
+		padding-right: 0;
+		padding-left: 0;
+		grid-column-start: auto;
+	}
+
+	[class*="col--float-offset-"] {
+		margin-left: 0;
+	}
+
+	@for $i from 2 through 12 {
+		.col-#{$i} {
+			grid-column-end: span #{$i};
+		}
+	}
+
+	@for $i from 1 through 11 {
+		.col--grid-offset-#{$i} {
+			grid-column-start: #{$i + 1};
+		}
+	}
+
+	.col--clear {
+		clear: none;
+	}
+}
+

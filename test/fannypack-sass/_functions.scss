@@ -1,0 +1,58 @@
+////////////////////////////////////////////////////////////////////////////////
+// FUNCTIONS
+//
+// description:
+// custom functions for DPP styleguide
+////////////////////////////////////////////////////////////////////////////////
+
+
+@function is-color($color) {
+	@return (type-of($color) == color) or ($color == 'currentColor');
+}
+
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+// Compares contrast of a given color to the light/dark arguments and returns
+// whichever is most "contrasty"
+// YIQ color space = https://en.wikipedia.org/wiki/YIQ
+@function color-contrast($color, $dark: $black, $light: $white) {
+	@if not is-color($color) {
+		@error "`#{$color}` is not a valid color for the `$color` argument in " +
+		"the `color-contrast` function.";
+	} @else {
+		$r: red($color);
+		$g: green($color);
+		$b: blue($color);
+
+		$yiq: ((($r * 299) + ($g * 587) + ($b * 114)) / 1000);
+		@return if($yiq >= 128, $dark, $light);
+	}
+}
+
+// turn any px based value into an `em` based on the base-font-size
+@function emify($val, $base: $font-size-base) {
+	$base: strip-unit($base);
+	@return (($val / $base) * 1em);
+}
+
+// make it lighter
+@function tint($color, $percent) {
+	@if not is-color($color) {
+		@error "`#{$color}` is not a valid color for the `$color` argument in " +
+		"the `tint` function.";
+	} @else {
+		@return mix($white, $color, $percent);
+	}
+}
+
+// make it darker
+@function shade($color, $percent) {
+	@if not is-color($color) {
+		@error "`#{$color}` is not a valid color for the `$color` argument in " +
+		"the `shade` function.";
+	} @else {
+		@return mix($black, $color, $percent);
+	}
+}

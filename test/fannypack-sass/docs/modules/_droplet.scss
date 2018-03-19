@@ -1,0 +1,39 @@
+////////////////////////////////////////////////////////////////////////////////
+// DROPLET
+//
+// description:
+// color swatches
+////////////////////////////////////////////////////////////////////////////////
+
+.fp-droplet {
+	//
+}
+
+.fp-droplet__color {
+	padding-top: 50%;
+	border-radius: $border-radius-large $border-radius-large 0 0;
+
+	@each $name, $color in $allcolors {
+		.#{$name} > & {
+			background-color: $color;
+		}
+	}
+}
+
+.fp-droplet__meta {
+	padding: $double-spacing-unit;
+	border: 1px solid $border-color;
+	border-top: 0;
+	border-radius: 0 0 $border-radius-large $border-radius-large;
+	background-color: $white;
+}
+
+
+.fp-droplet__name {
+	font-size: $font-size-h4;
+	font-weight: 600;
+}
+
+.fp-droplet__hex {
+	color: $warmgrey;
+}

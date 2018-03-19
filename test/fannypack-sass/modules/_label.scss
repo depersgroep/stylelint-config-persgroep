@@ -1,0 +1,100 @@
+////////////////////////////////////////////////////////////////////////////////
+// LABELS
+//
+// description
+////////////////////////////////////////////////////////////////////////////////
+
+
+.label {
+	@include font-smoothing(default);
+	display: inline-block;
+	padding: .115em .7125em;
+	border: 1px solid $label-outline-default-border-color;
+	border-radius: $border-radius-base;
+	background-color: $label-default-bg;
+	color: $label-default-color;
+	font-size: $label-font-size;
+	font-weight: $label-font-weight;
+	white-space: nowrap;
+	vertical-align: baseline;
+
+	// if the label is actually a link
+	&[href] {
+		color: $label-default-color;
+		text-decoration: none;
+
+		&:focus,
+		&:hover {
+			border-color: $iron;
+			background-color: $iron;
+			color: $text-color;
+		}
+	}
+}
+
+@each $name, $color in $allcolors {
+	.label--#{$name} {
+		border-color: $color;
+		background-color: $color;
+
+		&,
+		&[href] {
+			color: color-contrast($color);
+		}
+
+		&[href] {
+			&:focus,
+			&:hover {
+				@if (saturation($color) >= (100% - $label-contrast-treshold)) {
+					border-color: desaturate($color, $label-contrast-treshold);
+					background-color: desaturate($color, $label-contrast-treshold);
+				} @else {
+					border-color: saturate($color, $label-contrast-treshold);
+					background-color: saturate($color, $label-contrast-treshold);
+				}
+
+				@if (color-contrast($color) == $black) {
+					@if (color-contrast(desaturate($color, $label-contrast-treshold)) == $black) {
+						color: color-contrast($color);
+					} @else {
+						color: invert(color-contrast($color));
+					}
+				} @else {
+					@if (color-contrast(saturate($color, $label-contrast-treshold)) == $white) {
+						color: color-contrast($color);
+					} @else {
+						color: invert(color-contrast($color));
+					}
+				}
+
+			}
+		}
+
+		&.label--outline {
+			color: $color;
+		}
+	}
+}
+
+.label--outline {
+	background-color: $label-outline-bg;
+
+	@each $name, $color in $allcolors {
+		&[href].label--#{$name} {
+			&:focus,
+			&:hover {
+				border-color: $color;
+				background-color: $color;
+				color: color-contrast($color);
+			}
+		}
+	}
+}
+
+.label--primary {
+	@extend .label--coolblue;
+}
+
+.label--secondary {
+	@extend .label--slate;
+}

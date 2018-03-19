@@ -1,0 +1,167 @@
+////////////////////////////////////////////////////////////////////////////////
+// TABS
+//
+//
+////////////////////////////////////////////////////////////////////////////////
+
+.tabs {
+	display: flex;
+	position: relative; // to give postioning context to the panes
+	flex-wrap: wrap; // does magic of wrapping the pane to the next line
+}
+
+//==============================================================================
+// MODIFIERS
+//==============================================================================
+.tabs--primary {
+	background-color: $tabs-primary-tab-bg;
+}
+
+.tabs--secondary {
+	background-color: $tabs-secondary-tab-bg;
+}
+
+// alternative layout (simpler, cleaner)
+.tabs--alt {
+	background-color: $tabs-alt-primary-tab-bg;
+}
+
+//==============================================================================
+// ELEMENTS
+//==============================================================================
+
+.tabs__link,
+.tabs__label {
+	display: block;
+	margin: 0;
+	padding: 0 ($base-spacing-unit * 1.5);
+	border-bottom: 0;
+	font-size: $font-size-base;
+	font-weight: 600;
+	line-height: $tabs-height;
+	cursor: pointer;
+
+	//The Magic
+	.tabs__trigger:checked + & {
+		position: relative;
+		cursor: default;
+		z-index: 2;
+	}
+
+	.tabs--primary & {
+		color: $tabs-primary-color;
+
+		&:focus,
+		&:hover {
+			color: $tabs-primary-hover-color;
+		}
+	}
+
+	.tabs--primary.tabs--alt & {
+		color: $tabs-alt-primary-color;
+
+		&:focus,
+		&:hover {
+			color: $tabs-alt-primary-hover-color;
+		}
+	}
+
+	.tabs--primary .tabs__trigger:checked + & {
+		background-color: $tabs-primary-active-bg;
+		color: $tabs-primary-active-color;
+	}
+
+	.tabs--secondary & {
+		color: $tabs-secondary-color;
+
+		&:focus,
+		&:hover {
+			color: $tabs-secondary-hover-color;
+		}
+	}
+
+	.tabs--secondary .tabs__trigger:checked + & {
+		background-color: $tabs-secondary-active-bg;
+		color: $tabs-secondary-active-color;
+	}
+
+	.tabs--alt & {
+		margin-right: ($base-spacing-unit * 3);
+		padding-right: 0;
+		padding-left: 0;
+		line-height: ($tabs-height - 9);
+
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+
+	.tabs--alt.tabs--primary & {
+		color: $tabs-alt-primary-color;
+
+		&:focus,
+		&:hover {
+			color: $tabs-alt-primary-hover-color;
+		}
+	}
+
+	.tabs--alt.tabs--primary .tabs__trigger:checked + & {
+		border-bottom: 3px solid $tabs-alt-secondary-active-border-color;
+		background: $tabs-alt-primary-active-bg;
+		color: $tabs-alt-primary-active-color;
+	}
+
+	.tabs--alt.tabs--secondary & {
+		color: $tabs-alt-secondary-color;
+
+		&:focus,
+		&:hover {
+			color: $tabs-alt-secondary-hover-color;
+		}
+	}
+
+	.tabs--alt.tabs--secondary .tabs__trigger:checked + & {
+		border-bottom: 3px solid $tabs-alt-secondary-active-border-color;
+		background: $tabs-alt-secondary-active-bg;
+		color: $tabs-alt-secondary-active-color;
+	}
+}
+
+// the checkbox
+.tabs__trigger {
+	display: none;
+}
+
+.tabs__pane {
+	position: absolute;
+	top: -9999em;
+	order: 1; // also does magic
+	width: 100%; // does the magic
+	padding: ($base-spacing-unit * 1.5) 0;
+
+	.tabs__trigger:checked + .tabs__label + & {
+		display: block;
+		position: relative;
+		top: 0;
+		z-index: 1;
+	}
+
+	.tabs--primary & {
+		background-color: $tabs-primary-pane-bg;
+	}
+
+	.tabs--secondary & {
+		background-color: $tabs-secondary-pane-bg;
+	}
+
+	.tabs--alt.tabs--primary & {
+		border-top: 1px solid $evil-gray;
+		background-color: $tabs-alt-primary-pane-bg;
+	}
+
+	.tabs--alt.tabs--secondary & {
+		border-top: 1px solid $evil-gray;
+		background-color: $tabs-alt-secondary-pane-bg;
+	}
+}

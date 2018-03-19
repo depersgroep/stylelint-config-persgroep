@@ -1,0 +1,193 @@
+////////////////////////////////////////////////////////////////////////////////
+// TABLES
+//
+// description
+////////////////////////////////////////////////////////////////////////////////
+
+// scss-lint:disable NestingDepth, SelectorDepth
+// stylelint-disable max-nesting-depth
+
+// mandatory wrapper if you want your table to be "responsive"
+.table__wrapper {
+	overflow-x: auto;
+}
+
+.table {
+	width: 100%;
+	max-width: 100%;
+	background-color: $table-bg;
+	border-collapse: collapse;
+	overflow-x: auto;
+
+	th,
+	td {
+		padding: ($table-spacing / 3);
+
+		@include mq-min($bp-small) {
+			padding: ($table-spacing / 1.5);
+		}
+
+		@include mq-min($bp-medium) {
+			padding: $table-spacing;
+		}
+
+		&[scope] {
+			font-weight: bold;
+		}
+
+		&[scope=row] {
+			color: $muted-color;
+			font-weight: normal;
+		}
+
+		> .label,
+		> .code {
+			display: inline; // if a child is inline-block with a different vertical-align than 'top' this fixes the misalignment of its cell
+		}
+	}
+
+	.key {
+		font-weight: bold;
+	}
+}
+
+caption {
+	@include mq-max(799px) {
+		text-align: left;
+	}
+}
+
+.table--bordered {
+	border: 1px solid $table-border-color;
+
+	caption {
+		padding: $half-spacing-unit;
+	}
+
+	th,
+	td {
+		border: 1px solid $table-cell-border-color;
+	}
+
+	thead th {
+		border-bottom-width: 5px;
+	}
+}
+
+.table--horizontal-borders {
+	border: 0;
+
+	th,
+	td {
+		border-bottom: 1px solid $table-cell-border-color;
+	}
+
+	thead th {
+		border-bottom-width: 5px;
+	}
+}
+
+.table--striped {
+	caption {
+		padding-bottom: $base-spacing-unit;
+	}
+
+	thead {
+		th {
+			background-color: $table-zebra-bg;
+		}
+	}
+
+	tbody tr {
+		th,
+		td {
+			background-color: $white;
+		}
+
+		&:nth-child(even) {
+			th,
+			td {
+				background-color: $table-zebra-bg;
+			}
+		}
+	}
+}
+
+//==============================================================================
+// RESPONSIVE TABLE THAT BECOMES STACKED ON SMALL SCREENS
+//==============================================================================
+.table--transformer {
+	@include mq-max(799px) {
+		display: block;
+		overflow-x: visible;
+	}
+
+	caption,
+	tbody,
+	tfoot,
+	tr,
+	th,
+	td {
+		@include mq-max(799px) {
+			display: block;
+			text-align: left;
+		}
+	}
+
+	thead {
+		@include mq-max(799px) {
+			display: none;
+		}
+	}
+
+	th,
+	td {
+		&:empty {
+			@include mq-max(799px) {
+				display: none;
+			}
+		}
+
+		&[data-title] {
+			&::before {
+				@include mq-max(799px) {
+					font-weight: bold;
+					content: attr(data-title) ':\00A0';
+				}
+			}
+		}
+	}
+
+	&.table--bordered {
+		th,
+		td {
+			@include mq-max(799px) {
+				border: 0;
+			}
+		}
+
+		tr:not(:last-child) {
+			@include mq-max(799px) {
+				border-bottom: 1px solid $table-cell-border-color;
+			}
+		}
+	}
+}
+
+.table--condensed {
+	th,
+	td {
+		padding: ($table-condensed-spacing / 3);
+
+		@include mq-min($bp-small) {
+			padding: ($table-condensed-spacing / 1.5);
+		}
+
+		@include mq-min($bp-medium) {
+			padding: $table-condensed-spacing;
+		}
+	}
+}
+
+// stylelint-enable max-nesting-depth
+// scss-lint:enable NestingDepth, SelectorDepth

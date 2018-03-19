@@ -1,0 +1,135 @@
+////////////////////////////////////////////////////////////////////////////////
+// PANELS
+//
+// description
+////////////////////////////////////////////////////////////////////////////////
+
+.panel {
+	display: block; // for <fieldset>
+	margin: 0; // for <fieldset>
+	padding: 0; // for <fieldset>
+	border: 1px solid $panel-border-color;
+	background-color: $panel-bg;
+
+	@include mq-min($bp-small) {
+		margin-bottom: ($base-spacing-unit * 1.5);
+
+	}
+
+	@include mq-min($bp-small) {
+		margin-bottom: $double-spacing-unit;
+	}
+}
+
+.panel__heading,
+.panel__body {
+	padding: $base-spacing-unit;
+
+	@include mq-min($bp-small) {
+		padding: ($base-spacing-unit * 1.5);
+
+	}
+
+	@include mq-min($bp-small) {
+		padding: $double-spacing-unit;
+	}
+}
+
+.panel__heading {
+	border-bottom: 1px solid $panel-border-color;
+}
+
+.panel__title {
+	margin: 0;
+	font-size: $panel-title-font-size;
+}
+
+// scss-lint:disable QualifyingElement
+// stylelint-disable selector-no-qualifying-type
+legend.panel__title {
+	display: block;
+	width: 100%;
+	padding: $base-spacing-unit;
+	float: left; // hack for <legend>
+	border-bottom: 1px solid $panel-border-color;
+	font-weight: bold;
+
+	@include mq-min($bp-small) {
+		padding: ($base-spacing-unit * 1.5);
+
+	}
+
+	@include mq-min($bp-small) {
+		padding: $double-spacing-unit;
+	}
+
+	+ .panel__body {
+		clear: both; // to clear the floating <legend>
+	}
+}
+// scss-lint:enable QualifyingElement
+// stylelint-enable selector-no-qualifying-type
+
+.panel__body {
+	> *:first-child {
+		margin-top: 0;
+	}
+
+	> *:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.panel--collapsible {
+	position: relative; // positioning context for the toggle
+
+	.panel__body {
+		display: none;
+	}
+
+	.panel__heading {
+		padding-right: $panel-toggler-dimensions;
+	}
+}
+// checkbox hack for collapsible panels
+.panel__trigger {
+	@include visually-hidden;
+
+	&:checked ~ {
+		.panel__body {
+			display: block;
+		}
+	}
+
+	&:not(:checked) ~ {
+		.panel__heading {
+			border-bottom: 0;
+		}
+	}
+}
+
+.panel__toggler {
+	position: absolute;
+	top: 14px;
+	right: 0;
+	width: $panel-toggler-dimensions;
+	height: $panel-toggler-dimensions;
+	color: $panel-toggler-color;
+	font-size: $panel-toggler-font-size;
+	line-height: $panel-toggler-dimensions;
+	text-align: center;
+	cursor: pointer;
+
+	&:hover {
+		color: $panel-toggler-hover-color;
+	}
+
+	&::before {
+		content: $panel-open-icon;
+	}
+
+	.panel__trigger:checked + &::before {
+		content: $panel-close-icon;
+	}
+}
+

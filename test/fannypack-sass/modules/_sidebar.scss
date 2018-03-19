@@ -1,0 +1,96 @@
+////////////////////////////////////////////////////////////////////////////////
+// SIDEBAR
+//
+// description:
+// sidebar - menu
+////////////////////////////////////////////////////////////////////////////////
+
+//==============================================================================
+// CHECKBOX HACK
+//==============================================================================
+.sidebar__checkbox {
+	@include visually-hidden;
+}
+
+.sidebar__menu {
+	display: block;
+	position: fixed;
+	top: $double-spacing-unit;
+	right: $base-spacing-unit;
+	width: 32px;
+	height: 32px;
+	padding: $half-spacing-unit;
+	cursor: pointer;
+	z-index: $site-header-z-index; // same as .site-header
+
+	@include mq-min($bp-large) {
+		display: none;
+	}
+}
+
+.sidebar__menu-line {
+	display: block;
+	width: 100%;
+	height: 3px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	background-color: $sidebar-line-color;
+
+	&:first-of-type {
+		margin-top: 4px;
+	}
+
+	.sidebar__menu--light & {
+		background-color: $sidebar-light-line-color;
+	}
+
+	.sidebar__checkbox:checked + .sidebar__menu & {
+		&:first-of-type {
+			transform: rotate(-45deg);
+			transform-origin: 18px 4px;
+		}
+
+		&:nth-of-type(2) {
+			display: none;
+		}
+
+		&:last-of-type {
+			transform: rotate(45deg);
+		}
+	}
+}
+
+.sidebar {
+	display: none;
+	padding: $double-spacing-unit;
+	border-right: 1px solid $border-color;
+	background-color: $sidebar-bg;
+
+	@include mq-min($bp-small) {
+		padding: ($base-spacing-unit * 3);
+	}
+
+	@include mq-min($bp-large) {
+		display: block;
+		flex: 0 0 $sidebar-width;
+		padding: ($base-spacing-unit * 5);
+
+		@supports (display: grid) {
+			width: 100%;
+		}
+	}
+
+	.sidebar__checkbox:checked + .sidebar__menu + & {
+		@include mq-max($bp-large - 1) {
+			display: block;
+			position: fixed;
+			top: $site-header-height;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			max-width: 480px;
+			overflow: auto;
+			z-index: $z-index-sidebar;
+		}
+	}
+}

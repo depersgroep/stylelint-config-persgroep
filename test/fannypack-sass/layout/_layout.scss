@@ -1,0 +1,353 @@
+////////////////////////////////////////////////////////////////////////////////
+// LAYOUT
+//
+// description:
+// Layout includes grid and containers. Things like .header, .article, .sidebar
+// belong in the modules
+////////////////////////////////////////////////////////////////////////////////
+
+@import 'grid';
+
+.layout--fixed-header {
+	body {
+		padding-top: $site-header-height;
+	}
+
+	.main-container {
+		position: relative;
+		// NO Z-INDEX !!!!!
+	}
+
+	.site-header {
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: $site-header-z-index;
+	}
+}
+
+.layout--vertical-header {
+	body {
+		padding-top: $site-header-height;
+
+		@include mq-min($bp-small) {
+			padding-top: 0;
+			padding-left: $site-header-vertical-width;
+		}
+	}
+}
+
+.container {
+	max-width: $container-max-width;
+	margin-right: auto;
+	margin-left: auto;
+	padding: $double-spacing-unit;
+
+	@if type-of($container-bg) == 'color' and $container-bg != $transparent {
+		background-color: $container-bg;
+	}
+}
+
+.layout--drawer,
+.layout--drawer-push {
+	body {
+		min-height: 100vh;
+	}
+
+	.site-header {
+		padding-left: 60px; // room for the drawer toggle
+	}
+
+	.main-content {
+		position: relative;
+		padding: $double-spacing-unit; // margin fixer
+		z-index: 1; // lower than .drawer
+	}
+
+	.hamburger {
+		position: fixed;
+		top: ($base-spacing-unit * 0.5);
+		left: $base-spacing-unit;
+
+	}
+
+	// .drawer__checkbox is deprecated
+	.drawer__checkbox:not(:checked) ~,
+	.hamburger__checkbox:not(:checked) ~ {
+		.drawer__push-container,
+		.main-content {
+			@include mq-min($bp-large) {
+				margin-left: $drawer-width;
+			}
+		}
+	}
+
+	// .drawer__checkbox is deprecated
+	.drawer__checkbox:checked ~,
+	.hamburger__checkbox:checked ~ {
+		.drawer__push-container,
+		.main-content {
+			@include mq-min($bp-large) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+.layout--drawer {
+	.main-container {
+		min-height: calc(100vh - #{$site-header-height});
+	}
+
+	.drawer--gutter + .main-content {
+		@include mq-max($bp-large - 1) {
+			margin-left: $drawer-gutter-width;
+		}
+	}
+
+	// .drawer__checkbox:checked is deprecated
+	.drawer__checkbox:checked ~,
+	.hamburger__checkbox:checked ~ {
+		.drawer--gutter + .main-content {
+			@include mq-min($bp-large) {
+				margin-left: $drawer-gutter-width;
+			}
+		}
+	}
+
+	.hamburger {
+		z-index: $drawer-hamburger-z-index; // same as .site-header
+	}
+}
+
+
+// pushes the <header> AND the main content
+// !!!!!! the DOM is different !!!!!!!
+.layout--drawer-push {
+	// scss-lint:disable SelectorDepth, NestingDepth
+	// stylelint-disable max-nesting-depth, selector-max-specificity
+	.site-header {
+		@include mq-min($bp-large) {
+			left: $drawer-width;
+			width: calc(100vw - #{$drawer-width});
+		}
+	}
+
+	.hamburger {
+		z-index: ($drawer-hamburger-z-index + 1); // higher as .site-header because of .drawer__push-container
+
+		@include mq-min($bp-large) {
+			left: ($drawer-width + $base-spacing-unit);
+		}
+	}
+
+	.drawer {
+		top: 0;
+	}
+
+	.hamburger__checkbox:not(:checked) ~ {
+		//
+	}
+
+	.hamburger__checkbox:checked ~ {
+		@include mq-min($bp-large) {
+			.hamburger {
+				left: $base-spacing-unit;
+			}
+
+			.drawer__push-container {
+				.site-header {
+					left: 0;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	// The site-header moves AND has visible icons when it's collapsed
+	&.layout--drawer-gutter {
+		.hamburger {
+			z-index: ($drawer-hamburger-z-index + 1); // higher as .site-header because of .drawer__push-container
+
+			@include mq-min($bp-large) {
+				left: ($drawer-width + $base-spacing-unit);
+			}
+		}
+
+		.drawer__push-container {
+			@include mq-max($bp-large - 1) {
+				margin-left: $drawer-gutter-width;
+			}
+		}
+
+		.hamburger__checkbox:checked ~ {
+			@include mq-min($bp-large) {
+				.drawer__push-container {
+					margin-left: $drawer-gutter-width;
+
+					.site-header {
+						left: $drawer-gutter-width;
+						width: calc(100vw - #{$drawer-gutter-width});
+					}
+				}
+			}
+		}
+	}
+
+	&.layout--fixed-header {
+		.hamburger__checkbox:checked ~ .drawer__push-container .site-header {
+			@include mq-max($bp-large - 1) {
+				z-index: 1;
+			}
+		}
+	}
+}
+
+// this version has a visible minified sidebar when collapsed. e.g. wordpress admin dashboard or jira board
+.layout--drawer-gutter {
+	.hamburger__checkbox:checked ~ {
+		@include mq-min($bp-large) {
+			.hamburger {
+				left: ($drawer-gutter-width + $base-spacing-unit);
+			}
+		}
+	}
+}
+
+.layout--sidebar {
+	body {
+		min-height: 100vh;
+
+		@include mq-min($bp-large) {
+			display: flex;
+			flex-direction: column;
+
+			@supports (display: grid) {
+				display: block;
+			}
+		}
+	}
+
+	.main-container {
+		position: relative; // postioning context for the drawer
+
+		@include mq-min($bp-large) {
+			display: flex;
+			flex: 1 0 auto;
+			flex-direction: row;
+			flex-wrap: wrap;
+			min-height: calc(100vh - #{$site-header-height});
+
+			@supports (display: grid) {
+				// scss-lint:disable PropertySpelling, PropertyUnits
+				display: grid;
+				grid-template-columns: $sidebar-width 1fr;
+				grid-template-rows: 1fr;
+			}
+		}
+	}
+
+	.main-content {
+		padding: $double-spacing-unit; // margin fixer
+
+		@include mq-min($bp-large) {
+			flex: 1 1 calc(100vw - #{$sidebar-width});
+
+			@supports (display: grid) {
+				flex: none;
+			}
+		}
+	}
+}
+
+.layout--diorama {
+	body {
+		display: flex;
+		width: 100%;
+		min-height: 100vh;
+		background-color: $white;
+
+		@include mq-min($bp-medium) {
+			display: flex;
+			flex-direction: row;
+			padding: 0;
+			background-position: 50% 50%;
+			background-size: cover;
+
+			// scss-lint:disable PropertySpelling, PropertyUnits
+			@supports (display: grid) {
+				display: grid;
+				grid-template-columns: 500px 1fr;
+			}
+		}
+
+		&::before,
+		&::after {
+			@include mq-min($bp-medium) {
+				position: fixed;
+				color: $white;
+				text-align: right;
+				z-index: -1;
+			}
+		}
+
+		&::before {
+			@include mq-min($bp-medium) {
+				right: 0;
+				bottom: 0;
+				left: 0;
+				padding: ($base-spacing-unit * 3) ($base-spacing-unit * 3) ($base-spacing-unit * 5);
+				background: linear-gradient(to bottom, rgba($black, 0) 0%, rgba($black, .6) 100%);
+				content: attr(data-credit);
+			}
+		}
+
+		&::after {
+			@include mq-min($bp-medium) {
+				right: ($base-spacing-unit * 3);
+				bottom: ($base-spacing-unit * 3);
+				font-size: $font-size-medium;
+				content: '© ' attr(data-copyright);
+				opacity: .6;
+			}
+		}
+	}
+
+	.main-container {
+		width: 100%;
+		padding: $double-spacing-unit;
+		background-color: $white;
+
+
+		@include mq-min($bp-medium) {
+			display: flex;
+			flex: 0 0 500px;
+			flex-direction: column;
+			height: 100vh;
+			min-height: 100%;
+			padding: 70px;
+			overflow: auto;
+		}
+
+		p,
+		.form {
+			margin-top: ($base-spacing-unit * 4);
+		}
+
+		p {
+			margin-bottom: 0;
+		}
+
+		.form {
+			margin-bottom: ($base-spacing-unit * 4);
+		}
+	}
+
+	.footer {
+		margin-top: auto;
+		padding-top: 25px;
+		border-top: 2px solid $border-color;
+		color: $warmgrey;
+	}
+}

@@ -1,0 +1,104 @@
+////////////////////////////////////////////////////////////////////////////////
+// EXAMPLE BLOCK
+//
+// description:
+// code examples in the docs
+////////////////////////////////////////////////////////////////////////////////
+.fp-example {
+	padding: $double-spacing-unit;
+	border-radius: $border-radius-base;
+	background-color: $white;
+	overflow: auto;
+
+	+ .highlight {
+		box-shadow: inset 0 10px 5px -5px rgba($evil-gray, .4);
+
+		.chroma {
+			margin: 0;
+		}
+	}
+
+	&--dark {
+		background-color: $almost-black;
+	}
+
+	&--app-icons {
+		@include clearfix;
+
+		.app-icon {
+			margin-right: $double-spacing-unit;
+			float: left;
+		}
+	}
+
+	&-app-icons-stacked {
+		.app-icon:not(:last-child) {
+			margin-bottom: $double-spacing-unit;
+		}
+	}
+
+	&--grid {
+		[class^="col-"] {
+			padding: $base-spacing-unit;
+			border: 1px solid $iron;
+			background-color: $evil-gray;
+		}
+
+		[class^="grid"] {
+			margin-bottom: $double-spacing-unit;
+		}
+
+		.grid .grid {
+			@supports (display: grid) {
+				margin-right: ($base-spacing-unit * -1);
+				margin-left: ($base-spacing-unit * -1);
+			}
+		}
+	}
+
+	&--grid-visible {
+		.col--dashed {
+			border: 1px dashed $evil-gray;
+			background-color: transparent;
+			color: $evil-gray;
+			text-align: center;
+		}
+	}
+
+	&--grid-float {
+		@supports (display: grid) {
+			.grid {
+				@include clearfix;
+				display: block;
+			}
+
+			[class^="col-"] {
+				margin-bottom: $double-spacing-unit;
+				float: left;
+			}
+
+			@for $i from 1 through 12 {
+				.col-#{$i} {
+					width: percentage($i / 12);
+				}
+			}
+
+			.col--clear {
+				clear: left;
+			}
+		}
+	}
+
+	> .site-header {
+		position: static;
+		padding-left: $double-spacing-unit;
+	}
+}
+
+.fp-transparent-bg {
+	background-clip: border-box;
+	background-image: linear-gradient(45deg, rgba($black, .0980392) 25%, rgba($black, 0) 25%, rgba($black, 0) 75%, rgba($black, .0980392) 75%, rgba($black, .0980392) 0), linear-gradient(45deg, rgba($black, .0980392) 25%, rgba($black, 0) 25%, rgba($black, 0) 75%, rgba($black, .0980392) 75%, rgba($black, .0980392) 0);
+	background-position: 0 0, 10px 10px;
+	background-size: 20px 20px;
+	background-origin: padding-box;
+}

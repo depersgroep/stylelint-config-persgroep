@@ -1,0 +1,52 @@
+////////////////////////////////////////////////////////////////////////////////
+// BREADCRUMB
+//
+// description
+////////////////////////////////////////////////////////////////////////////////
+
+.breadcrumb {
+	color: $breadcrumb-default-color;
+}
+
+// light version on a dark background
+.breadcrumb--light {
+	color: $breadcrumb-light-color;
+}
+
+.breadcrumb__list {
+	@include unstyled-list;
+	display: flex;
+	flex-direction: row;
+}
+
+
+.breadcrumb__item {
+	&::after {
+		margin-right: 7px;
+		margin-left: $half-spacing-unit;
+		content: '\203A'; // &rsaquo;
+	}
+
+	&:last-child {
+		&::after {
+			content: none;
+		}
+	}
+}
+
+.breadcrumb__link {
+	color: inherit;
+
+	&:visited {
+		color: inherit;
+	}
+
+	&:focus,
+	&:hover {
+		color: $text-color;
+
+		.breadcrumb--light & {
+			color: rgba($breadcrumb-light-color, .66);
+		}
+	}
+}

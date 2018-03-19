@@ -1,0 +1,46 @@
+////////////////////////////////////////////////////////////////////////////////
+// HEADER
+//
+// description:
+// The page header
+////////////////////////////////////////////////////////////////////////////////
+
+.site-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	height: $site-header-height;
+	padding-right: $double-spacing-unit;
+	padding-left: $double-spacing-unit;
+	border-bottom: 1px solid $site-header-border-color;
+	background-color: $site-header-bg;
+}
+
+.site-header--vertical {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: $site-header-z-index;
+
+	@include mq-min($bp-small) {
+		bottom: 0;
+		left: 0;
+		flex-direction: column;
+		width: $site-header-vertical-width;
+		height: 100vh;
+		padding: $double-spacing-unit ($base-spacing-unit * 1.5);
+		border-right: 1px solid $site-header-border-color;
+		border-bottom: 0;
+	}
+}
+
+.site-header__section {
+	& + & {
+		margin-left: $double-spacing-unit;
+	}
+
+	& + &--last {
+		margin-left: auto;
+	}
+}

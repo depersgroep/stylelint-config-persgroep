@@ -1,0 +1,61 @@
+////////////////////////////////////////////////////////////////////////////////
+// HAMBURGER
+//
+// description:
+// mmmmmmmm burgers #omnonnom
+////////////////////////////////////////////////////////////////////////////////
+
+//==============================================================================
+// CHECKBOX HACK
+//==============================================================================
+
+// the checkbox
+.hamburger__checkbox {
+	@include visually-hidden;
+}
+
+// the <label>
+.hamburger {
+	display: block;
+	width: $hamburger-dimension;
+	height: $hamburger-dimension;
+	padding: $half-spacing-unit $base-spacing-unit;
+	border: 1px solid $hamburger-border-color;
+	border-radius: $hamburger-border-radius;
+	cursor: pointer;
+
+	&:focus {
+		padding: ($half-spacing-unit - 1) ($base-spacing-unit - 1);
+		border: 2px solid $hamburger-focus-border-color;
+		outline: 0;
+	}
+
+	.site-header--vertical & {
+		margin-left: auto;
+
+		@include mq-min($bp-small) {
+			display: none;
+		}
+	}
+}
+
+.hamburger__line {
+	display: block;
+	width: 100%;
+	height: 2px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	background-color: $hamburger-line-color;
+
+	&:first-of-type {
+		margin-top: 9px;
+	}
+
+	.hamburger--light & {
+		background-color: $hamburger-light-line-color;
+	}
+
+	.hamburger:focus & {
+		background-color: $hamburger-focus-border-color;
+	}
+}

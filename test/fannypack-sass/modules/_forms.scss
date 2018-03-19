@@ -1,0 +1,224 @@
+////////////////////////////////////////////////////////////////////////////////
+// FORMS
+//
+// description:
+// forms and form elements
+////////////////////////////////////////////////////////////////////////////////
+
+.form {
+	width: 100%;
+	margin-bottom: $double-spacing-unit;
+
+	> *:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.form__fieldset {
+	margin-bottom: $double-spacing-unit;
+	padding: 0;
+	border: 0;
+}
+
+.form__legend {
+	//
+}
+
+// wrapper around label and input/textarea
+.form__group {
+	margin-bottom: $double-spacing-unit;
+	padding: 0;
+	border: 0;
+}
+
+.form__label {
+	display: block;
+	margin-bottom: $half-spacing-unit;
+	font-weight: bold;
+}
+
+// scss-lint:disable QualifyingElement
+// stylelint-disable selector-no-qualifying-type
+legend.form__label {
+	width: 100%;
+	float: left;
+
+	+ * {
+		clear: both;
+	}
+}
+// scss-lint:enable QualifyingElement
+// stylelint-enable selector-no-qualifying-type
+
+.form__label-meta {
+	color: $form-meta-color;
+	font-weight: normal;
+}
+
+.form__field,
+.form__textarea {
+	display: block;
+	width: 100%;
+	padding-right: $base-spacing-unit;
+	padding-left: $base-spacing-unit;
+	border: 1px double $border-color;
+	border-radius: $border-radius-base;
+	box-shadow: 0 1px 2px 0 rgba($black, .03);
+
+	&:focus {
+		padding-right: ($base-spacing-unit - 1);
+		padding-left: ($base-spacing-unit - 1);
+		border: 2px solid $form-field-focus-border-color;
+		outline: 0;
+	}
+
+	.is-invalid &,
+	.js-is-invalid & {
+		border-color: $error-color;
+
+		&:focus {
+			border-color: $form-field-focus-border-color;
+		}
+	}
+
+	.is-valid &,
+	.js-is-valid & {
+		border-color: $success-color;
+
+		&:focus {
+			border-color: $form-field-focus-border-color;
+		}
+	}
+}
+
+.form__field {
+	&:not([multiple]) {
+		height: $form-elements-height;
+	}
+
+	&[readonly] {
+		border-color: $form-element-readonly-border;
+		background-color: $form-element-readonly-bg;
+	}
+
+	&[disabled] {
+		border-color: $form-element-disabled-border;
+		background-color: $form-element-disabled-bg;
+	}
+}
+
+// scss-lint:disable QualifyingElement
+// stylelint-disable selector-no-qualifying-type
+input[type="file"].form__field {
+	display: inline-block;
+	height: auto;
+	padding-right: 0;
+	padding-left: 0;
+	border: 0;
+	box-shadow: none;
+}
+
+input[type="color"].form__field {
+	width: 44px;
+	padding-right: 0;
+	padding-left: 0;
+}
+// scss-lint:enable QualifyingElement
+// stylelint-enable selector-no-qualifying-type
+
+.form__textarea {
+	min-height: 120px;
+}
+
+.form__helptext {
+	display: block;
+	margin-bottom: $half-spacing-unit;
+	color: $form-help-text-color;
+	font-size: $font-size-medium;
+}
+
+.form__checkbox--inline,
+.form__radio--inline {
+	display: inline-block;
+
+	& + & {
+		margin-left: $double-spacing-unit;
+	}
+}
+
+.form__checkbox__input,
+.form__radio__input {
+	margin-right: $half-spacing-unit;
+}
+
+.form__field,
+.form__checkbox__input,
+.form__radio__input {
+	&[readonly],
+	&[disabled] {
+		box-shadow: none;
+		cursor: not-allowed;
+	}
+}
+
+//==============================================================================
+// FORM PANELS, same as PANELS
+//==============================================================================
+
+
+
+//==============================================================================
+// FEEDBACK & VALIDATION: ERROR reporting
+//==============================================================================
+.form__feedback {
+	font-size: $font-size-medium;
+
+	.is-invalid &,
+	.js-is-invalid & {
+		color: $error-color;
+	}
+
+	.is-valid &,
+	.js-is-valid & {
+		color: $success-color;
+	}
+}
+
+//==============================================================================
+// CONTAINER FOR THE SAVE BUTTONS
+//==============================================================================
+.form__actions {
+	text-align: right;
+}
+
+//==============================================================================
+// FORM GRIDS with fallback
+//==============================================================================
+.form__flex {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: baseline;
+}
+
+.form__box {
+	&:first-child {
+		flex-grow: 3;
+	}
+
+	&:last-child {
+		flex-grow: 2;
+	}
+}
+
+.form__box--joiner {
+	padding-right: $double-spacing-unit;
+	padding-left: $double-spacing-unit;
+}
+
+//==============================================================================
+// HELPERS for additional text
+//==============================================================================
+.form__joiner-text {
+	text-align: center;
+}

@@ -1,0 +1,326 @@
+////////////////////////////////////////////////////////////////////////////////
+// THEME: FANNYPACK
+//
+// description:
+// style for Fannypack documentation
+////////////////////////////////////////////////////////////////////////////////
+
+.theme--fp {
+	// scss-lint:disable SelectorDepth
+	// stylelint-disable selector-max-specificity
+
+	.main-content {
+		padding-top: 0;
+	}
+
+	.main-content__inner {
+		max-width: (764px + $drawer-width + ($double-spacing-unit * 2));
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.page-header {
+		margin: 0 ($double-spacing-unit * -1) $double-spacing-unit;
+		padding: $double-spacing-unit;
+		background-color: $dark;
+		color: $white;
+
+		@include mq-min($bp-small) {
+			padding: ($base-spacing-unit * 3) $double-spacing-unit;
+		}
+
+		@include mq-min($bp-small) {
+			padding: ($base-spacing-unit * 5) $double-spacing-unit;
+		}
+
+		h1 {
+			max-width: (764px + $drawer-width + ($double-spacing-unit * 2));
+			margin-top: 0;
+			margin-right: auto;
+			margin-bottom: 0;
+			margin-left: auto;
+		}
+	}
+
+	.alert__dismiss {
+		display: block;
+	}
+
+	.hero-unit__svg {
+		position: absolute;
+		height: auto;
+	}
+
+	.svg-art {
+		display: none;
+
+		@include mq-min($bp-small) {
+			display: block;
+			top: 120px;
+			left: 3%;
+		}
+
+		@include mq-min($bp-medium) {
+			top: 30%;
+		}
+	}
+
+	.svg-check-1 {
+		top: 28px;
+		left: 33%;
+		width: 24px;
+
+		@include mq-min($bp-small) {
+			left: 15%;
+			width: auto;
+		}
+
+		@include mq-min($bp-medium) {
+			top: 230px;
+			left: 26%;
+		}
+	}
+
+	.svg-check-2 {
+		top: 92px;
+		right: 10%;
+		width: 30px;
+
+		@include mq-min($bp-small) {
+			display: none;
+			top: 22px;
+			width: auto;
+		}
+
+		@include mq-min($bp-medium) {
+			display: block;
+			top: 50px;
+			right: auto;
+			left: 19%;
+		}
+	}
+
+	.svg-check-3 {
+		display: none;
+
+		@include mq-min($bp-medium) {
+			display: block;
+			top: 193px;
+			right: 9%;
+		}
+	}
+
+	.svg-fannypack {
+		bottom: 0;
+		left: 50%;
+		width: 50%;
+		max-width: 255px;
+		transform: translateX(-50%);
+
+		@include mq-min($bp-small) {
+			width: auto;
+		}
+	}
+
+	.svg-label {
+		display: none;
+
+		@include mq-min($bp-medium) {
+			display: block;
+			top: 160px;
+			left: 14%;
+		}
+	}
+
+	.svg-panel-1 {
+		top: 10px;
+		right: 15%;
+		width: 62px;
+
+		@include mq-min($bp-small) {
+			right: 20%;
+		}
+
+		@include mq-min($bp-medium) {
+			top: 0;
+			right: auto;
+			left: 50%;
+		}
+	}
+
+	.svg-panel-2 {
+		display: none;
+
+		@include mq-min($bp-medium) {
+			display: block;
+			top: 38px;
+			right: 24%;
+			width: auto;
+		}
+
+		@include mq-min(920px) {
+			top: 82px;
+			right: 26%;
+		}
+	}
+
+	.svg-star-1 {
+		top: 0;
+		left: 10%;
+		width: 33px;
+
+		@include mq-min($bp-small) {
+			top: 55px;
+			left: 42%;
+		}
+
+		@include mq-min($bp-medium) {
+			top: 84px;
+			left: 35%;
+		}
+	}
+
+	.svg-star-2 {
+		display: none;
+
+		@include mq-min($bp-small) {
+			display: block;
+			top: 200px;
+			right: 10%;
+		}
+
+		@include mq-min($bp-medium) {
+			top: 119px;
+		}
+
+		@include mq-min(920px) {
+			right: 13%;
+		}
+	}
+
+	.svg-text {
+		display: none;
+
+		@include mq-min($bp-medium) {
+			display: block;
+			top: 209px;
+			right: 21%;
+		}
+	}
+
+	.svg-trash {
+		top: 97px;
+		left: 10%;
+		width: 40px;
+
+		@include mq-min($bp-small) {
+			top: 80px;
+			right: 5%;
+			left: auto;
+			width: auto;
+		}
+
+		@include mq-min($bp-medium) {
+			top: 30px;
+			right: 0;
+		}
+	}
+
+	.site-header__section {
+		@include mq-max($bp-small - 1) {
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		&:last-child {
+			display: none;
+
+			@include mq-min($bp-small) {
+				display: block;
+				margin-left: auto;
+			}
+		}
+	}
+
+	.site-header .nav__link {
+		color: $link-color;
+
+		&:visited {
+			color: $link-color;
+		}
+
+		&:focus,
+		&:hover {
+			color: $link-hover-color;
+		}
+	}
+
+	.site-header .app-icon__name {
+		margin-left: 0;
+
+		.text--muted {
+			font-weight: normal;
+		}
+	}
+}
+
+.fp-hero-unit {
+	padding: 0;
+	background-color: $body-bg;
+
+	.container {
+		position: relative;
+		padding: ($base-spacing-unit * 5) 0 ($base-spacing-unit * 4);
+	}
+}
+
+// the svg
+.fp-hero-unit__img {
+	display: block;
+	position: relative;
+	width: 100%;
+	max-width: 1005px;
+	height: 0;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 50%;
+
+	@include mq-min($bp-small) {
+		padding-top: 240px;
+	}
+
+	@include mq-min($bp-medium) {
+		padding-top: 288px;
+	}
+}
+
+.fp-hero-unit__title {
+	margin-top: 0;
+	font-size: emify(36);
+	text-align: center;
+
+	@include mq-min($bp-small) {
+		font-size: emify(52);
+	}
+
+	@include mq-min($bp-medium) {
+		font-size: emify(66);
+	}
+}
+
+.fp-hero-unit__body {
+	font-size: $font-size-h4;
+	text-align: center;
+
+	@include mq-min($bp-small) {
+		width: 50%;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+.theme--fp-homepage {
+	body {
+		background-color: $white;
+	}
+}

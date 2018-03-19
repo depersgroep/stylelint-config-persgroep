@@ -1,0 +1,125 @@
+////////////////////////////////////////////////////////////////////////////////
+// APP ICON
+//
+// description:
+// App logo's
+////////////////////////////////////////////////////////////////////////////////
+
+.app-icon {
+	flex-shrink: 0;
+}
+
+.app-icon,
+.app-icon__link {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-decoration: none;
+}
+
+.app-icon__link {
+	//
+}
+
+.app-icon__logo {
+	flex: 0 0 $app-icon-logo-small-dimension;
+	width: $app-icon-logo-small-dimension;
+	height: $app-icon-logo-small-dimension;
+	border-radius: $app-icon-logo-small-border-radius;
+	background-color: $primary-color;
+	letter-spacing: -1px;
+	line-height: $app-icon-logo-small-dimension;
+	text-align: center;
+
+	// sizing
+	.app-icon--large & {
+		flex: 0 0 $app-icon-logo-large-dimension;
+		width: $app-icon-logo-large-dimension;
+		height: $app-icon-logo-large-dimension;
+		border-radius: $app-icon-logo-large-border-radius;
+		line-height: $app-icon-logo-large-dimension;
+	}
+
+	.app-icon--xlarge & {
+		flex: 0 0 $app-icon-logo-xlarge-dimension;
+		width: $app-icon-logo-xlarge-dimension;
+		height: $app-icon-logo-xlarge-dimension;
+		border-radius: $app-icon-logo-xlarge-border-radius;
+		line-height: $app-icon-logo-xlarge-dimension;
+	}
+
+	// coloring
+
+	@each $name, $color in $customcolors {
+		.app-icon--#{$name} & {
+			background-color: $color;
+		}
+	}
+
+	@each $name, $color in $additionalcolors {
+		.app-icon--#{$name} & {
+			background-color: $color;
+		}
+	}
+}
+
+.app-icon__character {
+	color: $white;
+	font-size: $app-icon-character-font;
+	font-weight: bold;
+
+	&:not(:first-child) {
+		color: rgba($black, .25);
+		font-weight: normal;
+	}
+
+	.app-icon--large & {
+		font-size: $app-icon-character-font-large;
+	}
+
+	.app-icon--xlarge & {
+		font-size: $app-icon-character-font-xlarge;
+	}
+}
+
+.app-icon__name {
+	margin-left: 15px;
+	color: $black;
+	font-size: $app-icon-name-font-size;
+	font-weight: bold;
+	line-height: 1.16667;
+
+	.app-icon--large & {
+		font-size: $app-icon-name-font-size-large;
+	}
+
+	.app-icon--xlarge & {
+		font-size: $app-icon-name-font-size-xlarge;
+	}
+
+	.site-header--vertical & {
+		display: none;
+	}
+}
+
+//==============================================================================
+// THE GRAPHIC LOGO
+//==============================================================================
+.app-icon__img {
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin: 10px auto auto;
+
+	.app-icon--large & {
+		width: 40px;
+		height: 40px;
+		margin-top: 20px;
+	}
+
+	.app-icon--xlarge & {
+		width: 50px;
+		height: 50px;
+		margin-top: 20px;
+	}
+}

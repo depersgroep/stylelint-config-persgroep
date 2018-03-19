@@ -1,0 +1,38 @@
+@charset 'UTF-8';
+
+////////////////////////////////////////////////////////////////////////////////
+// MAIN CSS FILE
+//
+// description:
+// Import all partials here
+////////////////////////////////////////////////////////////////////////////////
+@import 'functions';
+
+@import 'site-settings';
+@import 'modules-settings';
+@import 'mixins/mixins';
+
+// SMACSS principle
+// At the very core of SMACSS is categorization. By categorizing CSS rules, we
+// begin to see patterns and can define better practices around each of these
+// patterns.
+//
+// There are five types of categories:
+//
+// 1. Base
+// 2. Layout
+// 3. Module
+// 4. State
+// 5. Theme
+
+@import 'base/base'; //  = 1
+@import 'layout/layout'; // = 2
+@import 'modules/modules'; // = 3
+@import 'states/states'; // = 4
+@import 'themes/themes'; // = 5
+
+// Additional: helper classes
+@import 'utilities/utilities';
+
+// DON'T FORGET PRINT STYLES
+@import 'print';

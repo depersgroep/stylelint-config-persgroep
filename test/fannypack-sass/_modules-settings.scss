@@ -1,0 +1,308 @@
+////////////////////////////////////////////////////////////////////////////////
+// MODULE SETTINGS
+//
+// description:
+// Per module settings
+////////////////////////////////////////////////////////////////////////////////
+
+// scss-lint:disable SpaceAfterVariableName
+
+//==============================================================================
+// DEFAULTS
+//==============================================================================
+$hr-border-color: $border-color !default;
+
+//==============================================================================
+// CONTAINER
+//==============================================================================
+$container-max-width: 1200px !default;
+$container-bg: $transparent !default;
+
+//==============================================================================
+// GRID
+//==============================================================================
+$grid-spacing-unit: $double-spacing-unit !default;
+
+//==============================================================================
+// ALERTS
+//==============================================================================
+$alert-error-bg: tint($error-color, 50%) !default;
+
+$alert-warning-bg: tint($warning-color, 50%) !default;
+
+$alert-success-bg: tint($success-color, 50%) !default;
+
+$alert-info-bg: tint($primary-color, 50%) !default;
+
+//==============================================================================
+// FORMS
+//==============================================================================
+$form-elements-height: 35px !default;
+$form-help-text-color: $aluminum !default;
+$form-meta-color     : $form-help-text-color !default;
+
+$form-element-disabled-border : $iron !default;
+$form-element-disabled-bg : $silver !default;
+$form-element-readonly-border : $iron !default;
+$form-element-readonly-bg : $silver !default;
+
+$form-field-focus-border-color: $coolblue !default;
+
+//==============================================================================
+// SITE HEADER
+//==============================================================================
+$site-header-bg          : $white !default;
+$site-header-border-color: $border-color !default;
+$site-header-height      : 70px !default;
+$site-header-z-index     : 5 !default;
+$site-header-vertical-width: 90px !default;
+
+//==============================================================================
+// APP ICONS
+//==============================================================================
+$app-icon-name-font-size           : $font-size-large !default;
+$app-icon-name-font-size-large           : 28px !default;
+$app-icon-name-font-size-xlarge           : 36px !default;
+$app-icon-character-font      : 16px !default;
+
+$app-icon-logo-small-dimension     : 40px !default;
+$app-icon-logo-large-dimension     : 80px !default;
+$app-icon-logo-xlarge-dimension    : 94px !default;
+
+$app-icon-logo-small-border-radius : 5px !default;
+$app-icon-logo-large-border-radius : 10px !default;
+$app-icon-logo-xlarge-border-radius: 12px !default;
+
+$app-icon-character-font-large: 32px !default;
+$app-icon-character-font-xlarge: 40px !default;
+
+//==============================================================================
+// TOOLBAR
+//==============================================================================
+$toolbar-height: $site-header-height !default;
+$toolbar-light-bg: $white !default;
+$toolbar-dark-bg: #3c4d62 !default;
+$toolbar-border-color: $border-color !default;
+
+//==============================================================================
+// BREADCRUMB
+//==============================================================================
+$breadcrumb-default-color: $aluminum !default;
+$breadcrumb-light-color: $white !default;
+
+//==============================================================================
+// BUTTONS
+//==============================================================================
+$button-height: $form-elements-height !default;
+$button-border-radius: ($button-height / 2) !default;
+$button-font: inherit !default;
+$button-border-width: 2px !default;
+
+// default
+$button-default-bg: $transparent !default;
+$button-default-hover-bg: $transparent !default;
+$button-default-color: $text-color !default;
+$button-default-hover-color: $text-color !default;
+$button-default-border-color: $silver !default;
+$button-default-hover-border-color: $dark !default;
+
+// primary
+$button-primary-bg: #47a0c3 !default;
+$button-primary-hover-bg: darken($button-primary-bg, 15%) !default;
+$button-primary-color: $white !default;
+$button-primary-hover-color: $white !default;
+$button-primary-border-color: $button-primary-bg !default;
+$button-primary-hover-border-color: $button-primary-hover-bg !default;
+
+// secondary
+$button-secondary-bg: $transparent !default;
+$button-secondary-hover-bg: $transparent !default;
+$button-secondary-color: $dark !default;
+$button-secondary-hover-color: $dark !default;
+$button-secondary-border-color: $coolblue !default;
+$button-secondary-hover-border-color: $duskblue !default;
+
+// success
+$button-success-bg: $success-color !default;
+$button-success-hover-bg: darken($button-success-bg, 15%) !default;
+$button-success-color: $white !default;
+$button-success-hover-color: $white !default;
+$button-success-border-color: $button-success-bg !default;
+$button-success-hover-border-color: $button-success-hover-bg !default;
+
+// warning
+$button-warning-bg: $warning-color !default;
+$button-warning-hover-bg: darken($button-warning-bg, 7.5%) !default;
+$button-warning-color: $white !default;
+$button-warning-hover-color: $white !default;
+$button-warning-border-color: $button-warning-bg !default;
+$button-warning-hover-border-color: $button-warning-hover-bg !default;
+
+// error
+$button-error-bg: $error-color !default;
+$button-error-hover-bg: darken($button-error-bg, 15%) !default;
+$button-error-color: $white !default;
+$button-error-hover-color: $white !default;
+$button-error-border-color: $button-error-bg !default;
+$button-error-hover-border-color: $button-error-hover-bg !default;
+
+// link
+$button-link-bg: none !default;
+$button-link-hover-bg: none !default;
+$button-link-color: $link-color !default;
+$button-link-hover-color: $link-hover-color !default;
+$button-link-border-color: $transparent !default;
+$button-link-hover-border-color: $transparent !default;
+
+//==============================================================================
+// ICONS
+//==============================================================================
+$icon-font-path: #{$font-path}MaterialIcons !default;
+
+//==============================================================================
+// PAGINATION
+//==============================================================================
+$pagination-item-dimension: 24px, 40px !default;
+$pagination-border-color: $border-color !default;
+$pagination-color: #152030 !default;
+$pagination-active-bg: $pagination-color !default;
+$pagination-active-border-color: $pagination-color !default;
+$pagination-hover-bg: $primary-color !default;
+$pagination-font-size: $font-size-small, emify(18);
+$pagination-disabled-color: $aluminum !default;
+
+//==============================================================================
+// TABLES
+//==============================================================================
+$table-bg                : $white !default;
+$table-border-color      : $border-color !default;
+$table-cell-border-color : #f0f0f0 !default;
+$table-row-collapsible-bg:  rgba(#e4f1f6, .2) !default;
+$table-zebra-bg          : $whitesmoke !default;
+
+$table-spacing           : ($base-spacing-unit * 1.5) !default;
+$table-condensed-spacing : ($table-spacing / 2) !default;
+
+//==============================================================================
+// LABELS
+//==============================================================================
+$label-font-size                   : 87.5% !default;
+$label-font-weight                 : 600 !default;
+
+$label-contrast-treshold           : 30% !default;
+
+$label-default-bg                  : $silver !default;
+$label-default-color               : $steel !default;
+$label-outline-bg                  : $transparent !default;
+$label-outline-default-border-color: $label-default-bg !default;
+
+//==============================================================================
+// HAMBURGER
+//==============================================================================
+$hamburger-dimension       : 40px !default;
+$hamburger-border-color    : $silver !default;
+$hamburger-line-color      : $hamburger-border-color !default;
+$hamburger-light-line-color: $hamburger-border-color !default;
+$hamburger-border-radius   : $border-radius-large !default;
+$hamburger-focus-border-color: $coolblue !default;
+
+//==============================================================================
+// NAVIGATION
+//==============================================================================
+$nav-link-color             : $dark !default;
+$nav-link-hover-color       : $link-color !default;
+$nav-link-active-color      : $link-color !default;
+
+// on dark backgrounds
+$nav-light-link-color       : $white !default;
+$nav-light-link-bg          : $transparent !default;
+$nav-light-link-hover-color : $white !default;
+$nav-light-link-hover-bg    : #243245 !default;
+$nav-light-link-active-color: $white !default;
+$nav-light-link-active-bg   : $coolblue !default;
+
+//==============================================================================
+// MENU - SIDEBAR
+//==============================================================================
+$sidebar-width           : 262px !default;
+$sidebar-bg              : $white !default;
+$sidebar-line-color      : $black !default;
+$sidebar-light-line-color: $white !default;
+$z-index-sidebar         : 5 !default;
+
+//==============================================================================
+// DRAWER
+//==============================================================================
+$drawer-width                     : 295px !default;
+$drawer-gutter-width              : 70px !default;
+$drawer-bg                        : $dark !default;
+$drawer-hamburger-dimension       : $hamburger-dimension !default;
+$drawer-hamburger-line-color      : $hamburger-line-color !default;
+$drawer-hamburger-light-line-color: $hamburger-light-line-color !default;
+$drawer-section-title-color       : #5c7087 !default;
+$drawer-hamburger-z-index         : $site-header-z-index !default; // same as site-header
+// $drawer-gutter-z-index            : 1 !default;
+// $drawer-gutter-push-container-z-index: 2 !default
+
+//==============================================================================
+// FOOTER
+//==============================================================================
+$footer-height: 70px;
+$footer-bg    : $white !default;
+
+//==============================================================================
+// PANELS
+//==============================================================================
+$panel-bg             : $white !default;
+$panel-border-color   : $border-color !default;
+$panel-title-font-size: emify(18) !default;
+
+$panel-toggler-dimensions : 32px !default;
+$panel-toggler-font-size  : $font-size-h3 !default;
+$panel-toggler-color      : $gray !default;
+$panel-toggler-hover-color: $black !default;
+$panel-open-icon          : '+' !default;
+$panel-close-icon         : '-' !default;
+
+//==============================================================================
+// TABS
+//==============================================================================
+$tabs-height: 50px !default;
+
+$tabs-primary-tab-bg      : $whitesmoke !default;
+$tabs-primary-pane-bg     : $white !default;
+$tabs-primary-color       : $aluminum !default;
+$tabs-primary-hover-color : $coolblue !default;
+$tabs-primary-active-color: $white !default;
+$tabs-primary-active-bg   : $coolblue !default;
+
+$tabs-secondary-tab-bg      : $whitesmoke !default;
+$tabs-secondary-pane-bg     : $white !default;
+$tabs-secondary-color       : $tabs-primary-color !default;
+$tabs-secondary-hover-color : $slate !default;
+$tabs-secondary-active-color: $tabs-primary-active-color !default;
+$tabs-secondary-active-bg   : $slate !default;
+
+$tabs-alt-primary-tab-bg             : $white !default;
+$tabs-alt-primary-pane-bg            : $white !default;
+$tabs-alt-primary-color              : $aluminum !default;
+$tabs-alt-primary-hover-color        : $link-hover-color !default;
+$tabs-alt-primary-active-color       : $coolblue !default;
+$tabs-alt-primary-active-bg          : $white !default;
+$tabs-alt-primary-active-border-color: currentColor !default;
+
+$tabs-alt-secondary-tab-bg             : $white !default;
+$tabs-alt-secondary-pane-bg            : $white !default;
+$tabs-alt-secondary-color              : $aluminum !default;
+$tabs-alt-secondary-hover-color        : $slate !default;
+$tabs-alt-secondary-active-color       : $slate !default;
+$tabs-alt-secondary-active-bg          : $tabs-alt-primary-active-bg !default;
+$tabs-alt-secondary-active-border-color: $tabs-alt-primary-active-border-color !default;
+
+//==============================================================================
+// BOXES
+//==============================================================================
+$box-border-color : $border-color !default;
+$box-border-radius: $border-radius-base !default;
+
+// scss-lint:enable SpaceAfterVariableName

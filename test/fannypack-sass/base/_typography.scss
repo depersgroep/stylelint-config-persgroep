@@ -1,0 +1,36 @@
+////////////////////////////////////////////////////////////////////////////////
+// TYPOGRAPHY^
+//
+// description:
+// more general classes and helpers to make your typography consistent
+////////////////////////////////////////////////////////////////////////////////
+
+.text--success {
+	color: $success-color;
+}
+
+.text--warning {
+	color: $warning-color;
+}
+
+.text--error {
+	color: $error-color;
+}
+
+.text--muted {
+	color: $muted-color;
+}
+
+.lead,
+.text--large {
+	font-size: $font-size-large;
+	line-height: $line-height-large;
+}
+
+.text--centered {
+	text-align: center;
+}
+
+.text--right {
+	text-align: right;
+}

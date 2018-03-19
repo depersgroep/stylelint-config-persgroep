@@ -1,0 +1,85 @@
+////////////////////////////////////////////////////////////////////////////////
+// ICONS
+//
+// description:
+// Icons with a webfont
+// We use Material Icons from Google
+// https://material.io/icons/
+////////////////////////////////////////////////////////////////////////////////
+
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Material Icons'),
+		local('MaterialIcons-Regular'),
+		url('#{$icon-font-path}/MaterialIcons-Regular.woff2?lppymq') format('woff2'),
+		url('#{$icon-font-path}//MaterialIcons-Regular.woff?lppymq') format('woff'),
+		url('#{$icon-font-path}/MaterialIcons-Regular.ttf?lppymq') format('truetype');
+}
+
+.material-icons {
+	display: inline-block;
+	font-family: 'Material Icons';
+	font-size: $font-size-base;  // Preferred icon size
+	// Support for Firefox.
+	-moz-osx-font-smoothing: grayscale;
+	// Support for all WebKit browsers.
+	-webkit-font-smoothing: antialiased;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 1;
+	// Support for Safari and Chrome.
+	text-rendering: optimizeLegibility;
+	text-transform: none;
+	white-space: nowrap;
+	vertical-align: -.3ex;
+	// vertical-align: baseline;
+	word-wrap: normal;
+	direction: ltr;
+	// Support for IE.
+	font-feature-settings: 'liga';
+}
+
+.mi--18 {
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
+}
+
+.mi--24 {
+	width: 24px;
+	height: 24px;
+	font-size: 24px;
+}
+
+.mi--36 {
+	width: 36px;
+	height: 36px;
+	font-size: 36px;
+}
+
+.mi--48 {
+	width: 48px;
+	height: 48px;
+	font-size: 48px;
+}
+
+.mi--dark {
+	color: rgba($black, .54);
+
+	&.is-inactive,
+	&.js-is-inactive {
+		color: rgba($black, .26);
+	}
+}
+
+.mi--light {
+	color: $white;
+
+	&.is-inactive,
+	&.js-is-inactive {
+		color: rgba($white, .3);
+	}
+}

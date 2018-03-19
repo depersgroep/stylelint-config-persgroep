@@ -1,0 +1,25 @@
+////////////////////////////////////////////////////////////////////////////////
+// TOOLBAR
+//
+// description:
+// extra row below the .site-header
+////////////////////////////////////////////////////////////////////////////////
+
+.toolbar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: $toolbar-height;
+	padding-right: 15px;
+	padding-left: 15px;
+	border-bottom: 1px solid $toolbar-border-color;
+	background-color: $toolbar-light-bg;
+}
+
+.toolbar--dark {
+	border-bottom: 0;
+	background-color: $toolbar-dark-bg;
+}
+

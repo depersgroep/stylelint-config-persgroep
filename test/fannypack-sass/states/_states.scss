@@ -1,0 +1,51 @@
+////////////////////////////////////////////////////////////////////////////////
+// STATES
+//
+// description:
+// This is a difficult one. One can opt to includes states in the modules, while
+// others prefer a separate file. For maintainability I prefer to write the
+// state(s) in the same file as the corresponding module
+//
+// e.g: _tabs.scss
+// .tab { /* some styling here */ }
+// .tab.is-active { /* styling overrides */ }
+//
+// More general states are just fine here
+// e.g. _modal.scss
+// .modal { /* some styling here */ }
+// .is-hidden { display: none !important;}
+//
+// NOTE: it's okay to use !important in some cases, just use it sparingly and
+// wisely
+//
+// Setting states with JavaScript requires the .js- prefix to the state
+// e.g.: .js-is-hidden
+// This improves debugging quite a lot
+////////////////////////////////////////////////////////////////////////////////
+
+// scss-lint:disable ImportantRule
+// stylelint-disable declaration-no-important
+
+.is-hidden,
+.js-is-hidden {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+.is-invisible,
+.js-is-invisible {
+	visibility: hidden !important;
+}
+
+.is-visible,
+.js-is-visible {
+	display: block !important;
+	visibility: visible !important;
+}
+
+.is-visually-hidden {
+	@include visually-hidden;
+}
+
+// stylelint-enable declaration-no-important
+// scss-lint:enable ImportantRule

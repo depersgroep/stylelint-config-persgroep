@@ -1,0 +1,82 @@
+@charset 'UTF-8';
+
+@import '../functions';
+@import '../site-settings';
+@import '../modules-settings';
+@import '../mixins/mixins';
+@import 'theme-fannypack';
+@import 'modules/modules';
+
+////////////////////////////////////////////////////////////////////////////////
+// DOCS
+//
+// description:
+// custom styling for the documentation site
+////////////////////////////////////////////////////////////////////////////////
+
+
+.layout--diorama {
+	.dialog__checkbox {
+		@include visually-hidden;
+	}
+
+	.dialog__toggle {
+		position: fixed;
+		bottom: $double-spacing-unit;
+		left: $double-spacing-unit;
+		padding: .2em .6em;
+		border-radius: $border-radius-base;
+		background-color: $primary-color;
+		color: $white;
+		z-index: 2;
+
+		&::after {
+			content: 'Show code </>';
+		}
+
+	}
+
+	.dialog__checkbox:checked {
+		+ .dialog__toggle {
+			top: ($base-spacing-unit * 10);
+			right: ($base-spacing-unit * 6);
+			bottom: auto;
+			left: auto;
+
+			@include mq-min(1280px) {
+				right: auto;
+				right: calc(50% - 580px);
+			}
+
+			// scss-lint:disable NestingDepth
+			&::after {
+				content: 'Hide code </>';
+			}
+
+			+ .dialog {
+				display: block;
+			}
+		}
+	}
+
+	.dialog {
+		display: none;
+		position: fixed;
+		top: ($base-spacing-unit * 8);
+		right: ($base-spacing-unit * 4);
+		left: ($base-spacing-unit * 4);
+		max-width: 1200px;
+		max-height: 80vh;
+		padding: $double-spacing-unit;
+		border-radius: $border-radius-large;
+		background-color: $white;
+		box-shadow: 0 0 50px rgba($black, .3);
+		overflow: auto;
+		z-index: 1;
+
+		@include mq-min(1280px) {
+			margin-right: auto;
+			margin-left: auto;
+		}
+	}
+}
