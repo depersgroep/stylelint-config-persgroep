@@ -2,12 +2,10 @@
   "name": "stylelint-config-persgroep",
   "version": "1.0.0",
   "description": "De Persgroep stylelint config",
-  "main": "index.js",
+  "main": ".stylelintrc",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "node convertYamlConfig.js",
-    "prepublish": "npm run build",
-    "test": "./node_modules/stylelint/bin/stylelint.js test/fannypack-sass/**/*.scss --config index.js"
+    "test": "./node_modules/stylelint/bin/stylelint.js test/fannypack-sass/**/*.scss --config .stylelintrc"
   },
   "dependencies": {
     "stylelint-config-property-sort-order-smacss": "^3.0.1",

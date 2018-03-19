@@ -46,15 +46,8 @@ rules:
 
 Edit the `.stylelintrc` to add, update or delete rules.
 
-Build the config.js file (commit this with the project)
-
-```
-npm run build
-```
-
 Test your rules against the fannypack SCSS code (1.0.0)
 
 ```
-npm run build
 npm run test
 ```
