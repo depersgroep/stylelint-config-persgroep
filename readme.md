@@ -17,7 +17,7 @@ extends:
   - stylelint-config-persgroep
 ```
 
-If some rules don't work for you, you can disable them. This can also help when you migrate to this config: disable all rules, re-enable one and fix errors, re-enable the next rule. Set the rule to `null` to do this.
+If some rules don't work for you, you can disable them. Set the rule to `null` to do this. This can also help when you migrate to this config: disable all rules, re-enable one and fix errors, re-enable the next rule.
 
 Example for Fannypack:
 ```
